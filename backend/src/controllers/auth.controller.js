@@ -52,9 +52,10 @@ async function registerUserController(req, res) {
       }
     );
     // Store token in cookie
-    
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,        // HTTPS must
+      sameSite: "none",    // critical for cross-site cookies
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -129,9 +130,10 @@ async function loginUserController(req, res) {
       }
     );
 
-    // Store token in cookie
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,        // HTTPS must
+      sameSite: "none",    // critical for cross-site cookies
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 

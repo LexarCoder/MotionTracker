@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL:"https://motiontracker.onrender.com/auth/api",
+    baseURL:"https://motiontracker.onrender.com/auth",
     withCredentials:true
 })
 
