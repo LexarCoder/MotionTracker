@@ -71,9 +71,7 @@ async function handlelogout() {
 }
 
 
-useEffect(()=>{
-    handleGetme()
-})
+
     return (
 {
     loading, user, handleGetme, handleRegister, handleLogin, handlelogout
