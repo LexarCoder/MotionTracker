@@ -1,0 +1,195 @@
+// Lexar Tracker Theme Color Keys (Derived from User's Screenshot)
+$bg-lexar-dark: #05070c;             // Dark deep shade
+$card-hud-bg: rgba(10, 14, 26, 0.45); // Glass card fill
+$border-lexar-muted: rgba(255, 255, 255, 0.04);
+$border-hud-outline: rgba(59, 130, 246, 0.08);
+
+// Bright Colors matching the Start Tracking button gradient
+$blue-main: #4d66f6;
+$purple-main: #9d56ff;
+$cyan-accent: #38bdf8;
+$emerald-accent: #34d399;
+
+.features-container {
+  background-color: $bg-lexar-dark;
+  color: #f8fafc;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 160px 2rem 100px 2rem;
+  font-family: 'Inter', sans-serif;
+
+  // Section Content Structure
+  .modules-grid-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+
+    .section-header-minimal {
+      margin-bottom: 4.5rem;
+      text-align: left; // Kept clean and classic like left side text of hero section
+      
+      .index {
+        font-family: 'JetBrains Mono', monospace;
+        color: $cyan-accent;
+        font-size: 0.78rem;
+        letter-spacing: 1px;
+        background: rgba($cyan-accent, 0.06);
+        padding: 4px 12px;
+        border-radius: 50px;
+        border: 1px solid rgba($cyan-accent, 0.15);
+      }
+
+      h2 {
+        font-size: 2.85rem;
+        font-weight: 800;
+        margin: 1.25rem 0 0.75rem 0;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+
+      .subtitle {
+        color: #94a3b8;
+        max-width: 600px;
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  // Lexar Tracker Specialized Grid Cards
+  .module-card-wrapper {
+    position: relative;
+    border-radius: 20px;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .glass-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: $card-hud-bg;
+      border: 1px solid $border-hud-outline; // Styled like the layout on right side of screenshot
+      border-radius: 20px;
+      padding: 2.25rem;
+      text-decoration: none;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+
+      // Micro Visual corner framing
+      .corner-bracket {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-color: rgba(255, 255, 255, 0.04);
+        border-style: solid;
+        transition: border-color 0.3s ease;
+
+        &.top-left { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+        &.bottom-right { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+      }
+
+      .card-header-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        .icon-wrapper {
+          width: 46px;
+          height: 46px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          transition: all 0.3s ease;
+        }
+
+        .status-node {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.65rem;
+          color: rgba(255, 255, 255, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.04);
+          padding: 2px 8px;
+          border-radius: 4px;
+        }
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        flex-grow: 1;
+      }
+
+      .card-terminal-anchor {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: rgba(148, 163, 184, 0.5);
+        transition: color 0.3s ease;
+
+        .arrow-icon {
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+
+    // Tweak Hover profiles based on Lexar Button Gradients
+    &.neon-blue-variant:hover {
+      box-shadow: 0 20px 40px -15px rgba($blue-main, 0.15);
+      .glass-card {
+        border-color: rgba($blue-main, 0.3);
+        background: linear-gradient(135deg, rgba($card-hud-bg, 0.9) 0%, rgba(13, 18, 36, 0.4) 100%);
+        .icon-wrapper { color: $cyan-accent; border-color: rgba($cyan-accent, 0.25); }
+        .card-terminal-anchor { color: $cyan-accent; .arrow-icon { transform: translate(2px, -2px); } }
+        .corner-bracket { border-color: rgba($cyan-accent, 0.3); }
+      }
+    }
+
+    &.neon-purple-variant:hover {
+      box-shadow: 0 20px 40px -15px rgba($purple-main, 0.15);
+      .glass-card {
+        border-color: rgba($purple-main, 0.3);
+        background: linear-gradient(135deg, rgba($card-hud-bg, 0.9) 0%, rgba(22, 13, 36, 0.4) 100%);
+        .icon-wrapper { color: $purple-main; border-color: rgba($purple-main, 0.25); }
+        .card-terminal-anchor { color: $purple-main; .arrow-icon { transform: translate(2px, -2px); } }
+        .corner-bracket { border-color: rgba($purple-main, 0.3); }
+      }
+    }
+
+    &.neon-emerald-variant:hover {
+      box-shadow: 0 20px 40px -15px rgba($emerald-accent, 0.12);
+      .glass-card {
+        border-color: rgba($emerald-accent, 0.3);
+        background: linear-gradient(135deg, rgba($card-hud-bg, 0.9) 0%, rgba(11, 28, 22, 0.4) 100%);
+        .icon-wrapper { color: $emerald-accent; border-color: rgba($emerald-accent, 0.25); }
+        .card-terminal-anchor { color: $emerald-accent; .arrow-icon { transform: translate(2px, -2px); } }
+        .corner-bracket { border-color: rgba($emerald-accent, 0.3); }
+      }
+    }
+  }
+}

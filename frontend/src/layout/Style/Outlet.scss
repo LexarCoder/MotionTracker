@@ -1,0 +1,57 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: #05060a;
+  color: #ffffff;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Agar Navbar fixed/sticky hai */
+.main-content {
+  padding-top: 75px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Inter", sans-serif;
+  background: #05060a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Better image handling */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Better links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Better buttons */
+button {
+  font-family: inherit;
+}

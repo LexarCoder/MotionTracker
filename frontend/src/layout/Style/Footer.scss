@@ -1,0 +1,233 @@
+// Lexar Tracker Core Variables Sync
+$bg-lexar-dark: #05070c;             // Absolute deep dark slate black
+$card-hud-bg: rgba(10, 14, 26, 0.45); // Translucent footer layers
+$border-hud-outline: rgba(59, 130, 246, 0.08);
+
+// Brand Accent Colors
+$blue-main: #4d66f6;
+$purple-main: #9d56ff;
+$cyan-accent: #38bdf8;
+$text-dim: #94a3b8;
+
+.footer {
+  background-color: $bg-lexar-dark;
+  color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 5rem 2rem 2rem 2rem;
+  font-family: 'Inter', sans-serif;
+
+  // 1. TOP-BOTTOM GRADIENT GRID FOR CONTINUITY
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center top;
+    // Fade mask: top se lines thin and bright hongi, bottom me seamless dark blend
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // 2. SUBTLE REAR GLOW UNDERNEATH BRAND TEXT
+  .footer-glow {
+    position: absolute;
+    bottom: -100px;
+    left: 10%;
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($blue-main, 0.04) 0%, transparent 75%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Main Container Layout Flex/Grid Split
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+    @media (max-width: 968px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  // Brand Info Block Styles
+  .footer-brand {
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+
+      .brand-icon {
+        color: $cyan-accent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($cyan-accent, 0.05);
+        border: 1px solid rgba($cyan-accent, 0.15);
+        padding: 6px;
+        border-radius: 8px;
+      }
+
+      h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+
+        span {
+          color: $cyan-accent;
+        }
+      }
+    }
+
+    p {
+      color: $text-dim;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 320px;
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 4px 10px;
+        border-radius: 6px;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  // Links Columns Alignment
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+
+    h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: $text-dim;
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      width: fit-content;
+
+      svg {
+        color: rgba(255, 255, 255, 0.2);
+        transition: color 0.25s ease, transform 0.25s ease;
+      }
+
+      &:hover {
+        color: #ffffff;
+        transform: translateX(3px);
+
+        svg {
+          color: $cyan-accent;
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #ffffff;
+      font-size: 0.92rem;
+      font-weight: 500;
+
+      svg {
+        color: $blue-main;
+      }
+    }
+
+    p {
+      color: rgba($text-dim, 0.8);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+
+  // Bottom Base Navigation Strip
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+
+    p {
+      font-size: 0.82rem;
+      color: rgba($text-dim, 0.5);
+    }
+
+    // Top Button matching Lexar-style dark button mechanics
+    .top-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: $text-dim;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        background: $card-hud-bg;
+        border-color: rgba($blue-main, 0.4);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px -3px rgba($blue-main, 0.3);
+      }
+    }
+  }
+}

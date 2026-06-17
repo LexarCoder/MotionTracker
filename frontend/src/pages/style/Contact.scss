@@ -1,0 +1,134 @@
+// Lexar Core Variables
+$bg-lexar-dark: #05070c;
+$card-hud-bg: rgba(10, 14, 26, 0.7);
+$blue-main: #4d66f6;
+$purple-main: #9d56ff;
+$cyan-accent: #38bdf8;
+$text-muted: #94a3b8;
+
+.contact-container {
+  background-color: $bg-lexar-dark;
+  color: #f8fafc;
+  min-height: 100vh;
+  padding: clamp(80px, 10vh, 160px) clamp(1rem, 5vw, 4rem) 100px;
+  font-family: 'Inter', sans-serif;
+
+  .contact-split-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 8vw, 6rem);
+    align-items: flex-start;
+
+    @media (max-width: 968px) { grid-template-columns: 1fr; }
+  }
+
+  // --- Telemetry Info Panel ---
+  .telemetry-info-panel {
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba($cyan-accent, 0.05);
+      border: 1px solid rgba($cyan-accent, 0.15);
+      padding: 5px 12px;
+      border-radius: 50px;
+      color: $cyan-accent;
+      font: 0.75rem 'JetBrains Mono', monospace;
+      margin-bottom: 1.5rem;
+
+      .pulse-node {
+        width: 6px; height: 6px; border-radius: 50%;
+        background-color: $cyan-accent;
+        box-shadow: 0 0 8px $cyan-accent;
+        animation: opacityPulse 2s infinite ease-in-out;
+      }
+    }
+
+    h2 { font-size: clamp(2rem, 4vw, 2.85rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.25rem; }
+    .description { color: $text-muted; line-height: 1.6; margin-bottom: 3.5rem; }
+
+    .meta-cards-stack {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      .info-meta-card {
+        display: flex; align-items: center; gap: 1.25rem;
+        background: rgba(255, 255, 255, 0.01);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        padding: 1.25rem; border-radius: 14px;
+        transition: transform 0.2s;
+        
+        &:hover { background: rgba(255, 255, 255, 0.03); }
+        .meta-icon {
+          width: 40px; height: 40px; display: grid; place-items: center;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 10px; color: $blue-main;
+        }
+        h4 { font: 0.7rem 'JetBrains Mono', monospace; color: $text-muted; margin-bottom: 2px; }
+        p { font-size: 0.95rem; font-weight: 500; }
+      }
+    }
+  }
+
+  // --- Terminal Form ---
+  .form-terminal-wrapper {
+    width: 100%;
+    .terminal-glass-card {
+      background: $card-hud-bg;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      backdrop-filter: blur(30px);
+      position: relative;
+
+      .terminal-header {
+        display: flex; justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 1.25rem; margin-bottom: 2rem;
+        .terminal-bullets { display: flex; gap: 6px; 
+          .bullet { width: 8px; height: 8px; border-radius: 50%; opacity: 0.6; 
+            &.red { background: #ef4444; } &.yellow { background: #eab308; } &.green { background: #22c55e; }
+          }
+        }
+        .terminal-title { font: 0.68rem 'JetBrains Mono', monospace; color: $text-muted; }
+      }
+
+      .form-fields {
+        display: flex; flex-direction: column; gap: 2.5rem;
+        .input-group {
+          position: relative;
+          label {
+            position: absolute; top: 0; left: 0;
+            font: 0.75rem 'JetBrains Mono', monospace;
+            color: $text-muted;
+            pointer-events: none;
+            transition: all 0.3s ease;
+          }
+          // Floating Logic
+          input:focus ~ label, textarea:focus ~ label, select:focus ~ label, label.active {
+            top: -22px; font-size: 0.65rem; color: $cyan-accent;
+          }
+          input, select, textarea {
+            background: transparent; border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 5px 0; color: #fff; width: 100%; outline: none;
+            &:focus { border-bottom: 1px solid $blue-main; }
+          }
+        }
+        .btn-terminal-submit {
+          margin-top: 1rem; padding: 1rem; border-radius: 12px;
+          background: linear-gradient(135deg, $blue-main, $purple-main);
+          color: white; border: none; cursor: pointer;
+          display: grid; place-items: center; grid-auto-flow: column; gap: 0.5rem;
+          font-weight: 700; transition: transform 0.2s ease;
+          &:active { transform: scale(.97); }
+        }
+      }
+    }
+  }
+}
+
+@keyframes opacityPulse {
+  0%, 100% { opacity: 0.5; } 50% { opacity: 1; }
+}

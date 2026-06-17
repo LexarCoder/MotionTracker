@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  // --- Color Palette (Dark Minimalist Theme) ---
+  --bg-dark: #05050A;          // Deep dark background
+  --text-primary: #FFFFFF;     // Pure white for headings
+  --text-secondary: #A1A1AA;   // Soft gray for paragraphs and links
+  
+  // Brand Gradients & Accents
+  --accent-blue: #3B82F6;
+  --accent-purple: #8B5CF6;
+  --gradient-primary: linear-gradient(135deg, #4facfe 0%, #a18cd1 100%);
+  --border-light: rgba(255, 255, 255, 0.08);
+
+  // --- Typography Variables ---
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+// --- Universal Reset ---
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// --- Typography: Headings ---
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800; 
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em; // Tight tracking for modern look
+}
+
+h1 { font-size: clamp(3rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+h3 { font-size: clamp(2rem, 3vw, 2.5rem); }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+// --- Typography: Paragraphs ---
+p {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  max-width: 65ch; // Optimal reading width
+}
+
+// --- Links ---
+a {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+

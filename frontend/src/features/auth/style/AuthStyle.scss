@@ -1,0 +1,164 @@
+$bg-dark: #050508;
+$accent-blue: #3b82f6;
+$accent-purple: #8b5cf6;
+$text-secondary: #9ca3af;
+
+.auth-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh; /* Modern mobile viewport height fix */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, #1e1b4b, transparent 40%),
+              radial-gradient(circle at 70% 80%, #1e3a8a, transparent 40%),
+              $bg-dark;
+  padding: clamp(1rem, 5vw, 1.5rem); /* Dynamic padding based on screen size */
+}
+
+.auth-card {
+  background: transparent;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+              rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+              rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+              rgba(0, 0, 0, 0.06) 0px 2px 1px, 
+              rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+              rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+              rgba(0, 0, 0, 0.09) 0px 16px 8px, 
+              rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  padding: clamp(1.5rem, 8vw, 2.5rem); /* Responsive internal padding */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  box-sizing: border-box;
+
+  h2 { 
+    text-align: center; 
+    margin-bottom: clamp(1.5rem, 5vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 1.8rem); /* Fluid typography */
+  }
+}
+
+/* Optimized Social Icons Section - Fully Responsive */
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: clamp(1.8rem, 6vw, 2.5rem);
+  flex-wrap: wrap; /* Prevents overflow on ultra-small screens */
+  
+  button {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1; /* Equal width buttons */
+    min-width: 100px; /* Prevents text squeezing */
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother transition */
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px); /* Subtle premium feel */
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Input remains untouched in structure but made physically fluid */
+.input-group {
+  position: relative;
+  margin-bottom: clamp(1.5rem, 5vw, 2rem);
+
+  input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+    color: white;
+    outline: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+
+    &:focus { border-bottom: 2px solid $accent-blue; }
+  }
+
+  label {
+    position: absolute; left: 0; top: 10px;
+    color: $text-secondary; pointer-events: none; 
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Smooth label translation */
+  input:focus ~ label, input:valid ~ label {
+    top: -20px; font-size: 0.8rem; color: $accent-blue;
+  }
+
+  span {
+    position: absolute; right: 0; top: 10px; cursor: pointer; color: $text-secondary;
+    padding: 0 4px; /* Easier touch target on mobile */
+  }
+}
+
+.primary-btn {
+  width: 100%;
+  background: linear-gradient(90deg, $accent-blue, $accent-purple);
+  border: none; 
+  padding: 13px; 
+  border-radius: 8px; 
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer; 
+  display: flex; justify-content: center; gap: 10px;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  &:hover { 
+    filter: brightness(1.2);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3); /* Smooth glowing effect */
+  }
+
+  &:active {
+    transform: scale(0.98); /* Snappy feel on click/tap */
+  }
+}
+
+/* Optimized Footer Switch Section */
+.auth-switch { 
+  text-align: center; 
+  margin-top: clamp(1.5rem, 5vw, 2rem); 
+  font-size: 0.9rem; 
+  color: $text-secondary;
+  line-height: 1.4;
+  
+  a { 
+    color: $accent-blue; 
+    text-decoration: none; 
+    font-weight: 600;
+    margin-left: 5px;
+    display: inline-block; /* Smooth scale on hover if needed */
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: lighten($accent-blue, 10%);
+      text-decoration: underline;
+    }
+  } 
+}
