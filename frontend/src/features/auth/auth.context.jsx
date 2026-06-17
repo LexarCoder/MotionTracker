@@ -7,6 +7,8 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
     const getMe = async () => {
+      console.log("GET ME CALLED");
+
       try {
         setLoading(true);
         const data = await userGetme();
@@ -19,7 +21,6 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-      console.log("GET ME CALLED");
       getMe();
     }, []);
 
