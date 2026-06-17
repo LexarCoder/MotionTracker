@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
+      console.log("GET ME CALLED");
       getMe();
     }, []);
 
