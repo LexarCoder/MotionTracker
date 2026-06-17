@@ -1,6 +1,6 @@
 import {userGetme, userLogin, userRegister, userLogout} from "../services/auth.api"
 import { AuthContext } from "../auth.context"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 export const useAuth=()=>{
 const context =  useContext(AuthContext)
@@ -69,6 +69,11 @@ async function handlelogout() {
     setLoading(false)
    }
 }
+
+
+useEffect(()=>{
+    handleGetme()
+})
     return (
 {
     loading, user, handleGetme, handleRegister, handleLogin, handlelogout
