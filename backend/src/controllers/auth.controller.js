@@ -52,7 +52,7 @@ async function registerUserController(req, res) {
       }
     );
     // Store token in cookie
-    res.cookie("token", token, {
+    req.cookie("token", token, {
       httpOnly: true,
       secure: true,        // HTTPS must
       sameSite: "none",    // critical for cross-site cookies

@@ -15,7 +15,7 @@ app.use(cors({
 }));
 
 // Routes 
-app.use("/auth",AuthRouter)
+app.use("",AuthRouter)
 app.use("/api", songRouter)
 
 
